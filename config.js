@@ -1,8 +1,8 @@
 module.exports = {
     //
-    debugCode: false, // true || false ---> LIVE
-    //debugCode: true, // TEST
-    
+    //debugCode: false, // true || false ---> LIVE
+    debugCode: true, // TEST
+
     // URL để xác định IP hiện tại đang chạy tool
     //requestIP: 'https://ipecho.net/plain',
     requestIP: 'https://cloud.echbay.com/scan/eth/getipaddress',
@@ -19,7 +19,7 @@ module.exports = {
     testWallet: '0xbe0eb53f46cd790cd13851d5eff43d12404d33e8',
 
     // thư mục lưu trữ các kết quả trả về hoặc log
-    dirWritable: './writable',
+    dirWritable: '/writable',
 
     // số vòng lặp để scan địa chỉ ví
     maxWhile: 1000 * 1000,
