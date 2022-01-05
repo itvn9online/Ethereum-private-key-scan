@@ -1,7 +1,7 @@
 module.exports = {
     //
-    //debugCode: false, // true || false ---> LIVE
-    debugCode: true, // TEST
+    debugCode: false, // true || false ---> LIVE
+    //debugCode: true, // TEST
 
     // URL để xác định IP hiện tại đang chạy tool
     //requestIP: 'https://ipecho.net/plain',
