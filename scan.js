@@ -139,7 +139,8 @@ function action_eth_address() {
     random_eth_address();
 
     //
-    urlBase = myConfig.addressAPI + arr_adds.join(myConfig.addressComma);
+    //urlBase = myConfig.addressAPI + arr_adds.join(myConfig.addressComma);
+    urlBase = arr_adds.join(myConfig.addressComma);
 }
 
 function MY_time() {
@@ -187,9 +188,23 @@ function MY_scan(max_i) {
     auto_next_scan = false;
 
     //
-    var url = urlBase;
-    //console.log(url);
     MY_time();
+
+    //
+    console.log("\t\t\t\t\t" + 'Scan ETH');
+    done_scan(myConfig.addressAPI + urlBase, max_i);
+    console.log("\t\t\t\t\t" + 'Scan BNB');
+    done_scan(myConfig.address2API + urlBase, max_i, false);
+
+    //
+    return true;
+}
+
+//
+function done_scan(url, max_i, request_log) {
+    if (typeof request_log == 'undefined') {
+        request_log = true;
+    }
 
     //
     request.get({
@@ -279,7 +294,7 @@ function MY_scan(max_i) {
                     auto_next_scan = true;
 
                     //
-                    if (myConfig.requestLog != '') {
+                    if (myConfig.requestLog != '' && request_log !== false) {
                         request.get({
                             url: myConfig.requestLog + '?scan_count=' + total_scan,
                             json: true,
@@ -301,14 +316,13 @@ function MY_scan(max_i) {
         }
 
         //
-        clearTimeout(timeout_scan);
-        timeout_scan = setTimeout(function () {
-            while_scan(max_i - 1);
-        }, myConfig.spaceScan * 1000);
+        if (request_log !== false) {
+            clearTimeout(timeout_scan);
+            timeout_scan = setTimeout(function () {
+                while_scan(max_i - 1);
+            }, myConfig.spaceScan * 1000);
+        }
     });
-
-    //
-    return true;
 }
 
 //
