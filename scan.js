@@ -372,6 +372,7 @@ function while_scan(max_i) {
         //
         return false;
     }
+    while_error_scan = 0;
 
     // tạo địa chỉ ví ngẫu nhiên
     action_eth_address();
