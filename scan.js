@@ -213,11 +213,12 @@ function MY_scan(max_i) {
 
             //
             if (typeof data.status != 'undefined' && data.status * 1 === 1) {
-                total_scan += data.result.length;
+                var result_length = data.result.length;
+                total_scan += result_length;
 
                 // chạy vòng lặp kiểm tra số dư
                 var has_balance = false;
-                for (var i = 0; i < data.result.length; i++) {
+                for (var i = 0; i < result_length; i++) {
                     var pri = '';
                     for (var y = 0; y < arr_key_adds.length; y++) {
                         if (arr_key_adds[y].add == data.result[i].account) {
@@ -263,7 +264,7 @@ function MY_scan(max_i) {
 
                 //
                 total_while++;
-                console.log('Current scan: ' + data.result.length);
+                console.log('Current scan: ' + result_length);
                 console.log('Total scan: ' + total_scan);
                 console.log('Total while: ' + total_while);
                 console.log('Left: ' + (max_i - 1));
@@ -280,7 +281,7 @@ function MY_scan(max_i) {
                     //
                     if (myConfig.requestLog != '') {
                         request.get({
-                            url: myConfig.requestLog,
+                            url: myConfig.requestLog + '?scan_count=' + result_length,
                             json: true,
                             timeout: myConfig.requestTimeout * 1000,
                             headers: {
