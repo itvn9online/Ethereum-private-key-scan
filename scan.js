@@ -191,9 +191,9 @@ function MY_scan(max_i) {
     MY_time();
 
     //
-    console.log("\t\t\t\t\t" + 'Scan ETH and BNB');
-    done_scan(myConfig.addressAPI + urlBase, max_i);
-    done_scan(myConfig.address2API + urlBase, max_i, false);
+    console.log("\t\t\t\t\t" + 'Scan ETH +++ BNB');
+    done_scan(myConfig.addressAPI + urlBase, max_i, true);
+    done_scan(myConfig.address2API + urlBase, max_i);
 
     //
     return true;
@@ -202,7 +202,7 @@ function MY_scan(max_i) {
 //
 function done_scan(url, max_i, request_log) {
     if (typeof request_log == 'undefined') {
-        request_log = true;
+        request_log = false;
     }
 
     //
