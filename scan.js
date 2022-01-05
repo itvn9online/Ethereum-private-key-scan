@@ -217,7 +217,6 @@ function MY_scan(max_i) {
 
                 // chạy vòng lặp kiểm tra số dư
                 var has_balance = false;
-                console.log('Current scan: ' + data.result.length);
                 for (var i = 0; i < data.result.length; i++) {
                     var pri = '';
                     for (var y = 0; y < arr_key_adds.length; y++) {
@@ -264,6 +263,7 @@ function MY_scan(max_i) {
 
                 //
                 total_while++;
+                console.log('Current scan: ' + data.result.length);
                 console.log('Total scan: ' + total_scan);
                 console.log('Total while: ' + total_while);
                 console.log('Left: ' + (max_i - 1));
