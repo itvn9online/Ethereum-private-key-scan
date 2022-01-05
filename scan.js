@@ -191,9 +191,8 @@ function MY_scan(max_i) {
     MY_time();
 
     //
-    console.log("\t\t\t\t\t" + 'Scan ETH');
+    console.log("\t\t\t\t\t" + 'Scan ETH and BNB');
     done_scan(myConfig.addressAPI + urlBase, max_i);
-    console.log("\t\t\t\t\t" + 'Scan BNB');
     done_scan(myConfig.address2API + urlBase, max_i, false);
 
     //
