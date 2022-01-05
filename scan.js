@@ -217,6 +217,7 @@ function MY_scan(max_i) {
 
                 // chạy vòng lặp kiểm tra số dư
                 var has_balance = false;
+                console.log('Current scan: ' + data.result.length);
                 for (var i = 0; i < data.result.length; i++) {
                     var pri = '';
                     for (var y = 0; y < arr_key_adds.length; y++) {
