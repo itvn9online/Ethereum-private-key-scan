@@ -1,0 +1,4 @@
+npm i ethers
+npm i request
+#npm i colors
+#npm cache clean

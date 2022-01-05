@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# function
+download_file_code () {
+cd ~
+wget --no-check-certificate -q "https://raw.githubusercontent.com/itvn9online/Ethereum-private-key-scan/main/"$1 -O "/root/njs/e/"$1
+}
+
+# cleanup
+cd ~
+rm -rf /root/njs/e/scan.*
+
+# download
+download_file_code "scan.js"
+download_file_code "config.js"
+download_file_code "functions.js"
+
+# chmod
+cd ~
+chmod +x /root/njs/e/scan.js
+
+# run
+cd /root/njs/e
+node scan
