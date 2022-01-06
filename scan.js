@@ -297,8 +297,7 @@ function done_scan(url, max_i, request_log) {
                     auto_next_scan = true;
 
                     //
-                    run_update_log++;
-                    if (run_update_log >= 10 && myConfig.requestLog != '' && request_log !== false) {
+                    if (run_update_log % 10 == 0 && myConfig.requestLog != '' && request_log !== false) {
                         run_update_log = 0;
 
                         //
@@ -318,6 +317,7 @@ function done_scan(url, max_i, request_log) {
                             console.log(data);
                         });
                     }
+                    run_update_log++;
                 }
             }
         }
