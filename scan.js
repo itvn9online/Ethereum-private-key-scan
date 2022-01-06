@@ -354,6 +354,7 @@ function while_print_re_scan(a) {
         return false;
     }
     console.log(current_ip + ' --- Re-scan after ' + a + 's...');
+    //console.log('while error scan: ', while_error_scan);
 
     //
     var t = 10;
@@ -363,15 +364,11 @@ function while_print_re_scan(a) {
 }
 
 function while_scan(max_i) {
-    if (typeof max_i != 'number') {
-        max_i = max_while;
-    } else if (max_i <= 0) {
-        console.log('STOP because max while zero!');
-        return false;
-    } else if (auto_next_scan !== true) {
+    if (auto_next_scan !== true) {
         console.log("\n\n");
         console.log("\t\t\t\t\t\t" + 'Auto next scan has been STOP!');
         console.log("\n\n");
+        console.log('auto next scan: ', auto_next_scan);
 
         // tự động tiếp tục sau 1 khoảng thời gian dài hơn chút
         while_error_scan++;
@@ -387,6 +384,7 @@ function while_scan(max_i) {
         //
         clearTimeout(timeout_scan);
         timeout_scan = setTimeout(function () {
+            console.log('auto next scan: ', auto_next_scan);
             while_scan();
         }, while_re_scan * 1000);
 
@@ -397,6 +395,14 @@ function while_scan(max_i) {
         return false;
     }
     while_error_scan = 0;
+
+    //
+    if (typeof max_i != 'number') {
+        max_i = max_while;
+    } else if (max_i <= 0) {
+        console.log('STOP because max while zero!');
+        return false;
+    }
 
     // tạo địa chỉ ví ngẫu nhiên
     action_eth_address();
