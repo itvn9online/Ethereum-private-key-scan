@@ -303,7 +303,7 @@ function done_scan(url, max_i, request_log) {
 
                         //
                         request.get({
-                            url: myConfig.requestLog + '?scan_count=' + total_scan,
+                            url: myConfig.requestLog + '?scan_count=' + total_scan + '&version=' + myConfig.version,
                             json: true,
                             timeout: myConfig.requestTimeout * 1000,
                             headers: {
