@@ -329,7 +329,13 @@ function done_scan(url, max_i, coin_code, request_log) {
                     auto_next_scan = true;
 
                     //
+                    //console.log('Run update log:', run_update_log % 10);
+                    //console.log('Request Log:', myConfig.requestLog);
+                    //console.log('request log:', request_log);
                     if (run_update_log % 10 == 0 && myConfig.requestLog != '' && request_log !== false) {
+                        //console.log('Run update log: ', coin_code);
+
+                        //
                         run_update_log = 0;
 
                         //
@@ -357,7 +363,9 @@ function done_scan(url, max_i, coin_code, request_log) {
                         console.log('No update log: ', coin_code);
                         */
                     }
-                    run_update_log++;
+                    if (request_log !== false) {
+                        run_update_log++;
+                    }
                 }
             }
         }
