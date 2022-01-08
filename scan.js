@@ -70,10 +70,6 @@ if (myConfig.requestIP != '') {
     });
 }
 
-// thống kê
-var total_scan = 0;
-var total_while = 0;
-
 // tạo thư mục lưu trữ
 var dir_writable = __dirname + myConfig.dirWritable;
 console.log(dir_writable);
@@ -91,6 +87,9 @@ console.log('Current date: ' + current_date);
 var dir_date_log = dir_log + '/' + current_date;
 myFunctions.createDir(dir_date_log);
 
+// thống kê
+var total_while = 0;
+var total_scan = 0;
 
 //
 var str_adds = '';
@@ -193,6 +192,9 @@ function MY_scan(max_i) {
 
     //
     MY_time();
+
+    // lấy tổng số lần scan trong log -> để còn duy trì được lượng scan theo từng ngày khác nhau
+    total_scan = myFunctions.countScan(dir_log);
 
     //
     console.log("\t\t\t\t\t" + 'Scan ETH +++ BNB');
@@ -328,6 +330,12 @@ function done_scan(url, max_i, request_log) {
             timeout_scan = setTimeout(function () {
                 while_scan(max_i - 1);
             }, myConfig.spaceScan * 1000);
+
+            // lưu lại tổng số lần scan mới
+            setTimeout(function () {
+                myFunctions.countScan(dir_log, total_scan);
+                console.log('Total scan (log): ', total_scan);
+            }, 500);
         }
     });
 }
