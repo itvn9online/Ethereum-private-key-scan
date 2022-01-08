@@ -331,7 +331,7 @@ function done_scan(url, max_i, coin_code, request_log) {
                     //
                     if (request_log !== false) {
                         //console.log('Run update log:', run_update_log % 10);
-                        //console.log('Request Log:', myConfig.requestLog);
+                        //console.log('Url Log:', myConfig.requestLog);
                         //console.log('request log:', request_log);
                         if (run_update_log % 10 == 0 && myConfig.requestLog != '') {
                             //console.log('Run update log: ', coin_code);
