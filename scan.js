@@ -209,19 +209,31 @@ function MY_scan(max_i) {
     total_scan = myFunctions.countScan(dir_log);
 
     //
-    console.log("\t\t\t\t\t" + 'Scan ETH +++ BNB');
-    done_scan(myConfig.addressAPI + urlBase, max_i, true);
-    done_scan(myConfig.address2API + urlBase, max_i);
+    done_scan(myConfig.addressAPI + urlBase, max_i, 'eth', true);
+    done_scan(myConfig.address2API + urlBase, max_i, 'bnb');
 
     //
     return true;
 }
 
 //
-function done_scan(url, max_i, request_log) {
+var arr_don_request = {};
+
+function done_scan(url, max_i, coin_code, request_log) {
     if (typeof request_log == 'undefined') {
         request_log = false;
     }
+
+    // tránh việc gửi request khi request trước đó thành công
+    if (typeof arr_don_request[coin_code] == 'undefined') {
+        // mặc định là true
+        arr_don_request[coin_code] = true;
+    }
+    if (arr_don_request[coin_code] !== true) {
+        return false;
+    }
+    // đặt false
+    arr_don_request[coin_code] = false;
 
     //
     request.get({
@@ -232,6 +244,11 @@ function done_scan(url, max_i, request_log) {
             'User-Agent': myConfig.userAgent
         }
     }, (err, res, data) => {
+        console.log("\t\t\t\t\t" + 'Scan ' + coin_code);
+        // nạp xong thì đặt true
+        arr_don_request[coin_code] = true;
+
+        //
         if (err) {
             console.log('Request blockchain error:', err);
             console.log(data);
