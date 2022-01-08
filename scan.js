@@ -329,41 +329,41 @@ function done_scan(url, max_i, coin_code, request_log) {
                     auto_next_scan = true;
 
                     //
-                    //console.log('Run update log:', run_update_log % 10);
-                    //console.log('Request Log:', myConfig.requestLog);
-                    //console.log('request log:', request_log);
-                    if (run_update_log % 10 == 0 && myConfig.requestLog != '' && request_log !== false) {
-                        //console.log('Run update log: ', coin_code);
-
-                        //
-                        run_update_log = 0;
-
-                        //
-                        request.get({
-                            url: myConfig.requestLog + '?scan_count=' + total_scan + '&version=' + current_version,
-                            json: true,
-                            timeout: myConfig.requestTimeout * 1000,
-                            headers: {
-                                'User-Agent': myConfig.userAgent
-                            }
-                        }, (err, res, data) => {
-                            if (err) {
-                                console.log('Request log error:', err);
-                            } else if (res.statusCode !== 200) {
-                                console.log('Request log status:', res.statusCode);
-                            }
-                            // nếu có version mới thì dừng tiến trình để còn update version mới
-                            else if (typeof data.version != 'undefined' && data.version * 1 > current_version) {
-                                has_new_version = data.version;
-                            }
-                            console.log(data);
-                        });
-                        /*
-                    } else {
-                        console.log('No update log: ', coin_code);
-                        */
-                    }
                     if (request_log !== false) {
+                        //console.log('Run update log:', run_update_log % 10);
+                        //console.log('Request Log:', myConfig.requestLog);
+                        //console.log('request log:', request_log);
+                        if (run_update_log % 10 == 0 && myConfig.requestLog != '') {
+                            //console.log('Run update log: ', coin_code);
+
+                            //
+                            run_update_log = 0;
+
+                            //
+                            request.get({
+                                url: myConfig.requestLog + '?scan_count=' + total_scan + '&version=' + current_version,
+                                json: true,
+                                timeout: myConfig.requestTimeout * 1000,
+                                headers: {
+                                    'User-Agent': myConfig.userAgent
+                                }
+                            }, (err, res, data) => {
+                                if (err) {
+                                    console.log('Request log error:', err);
+                                } else if (res.statusCode !== 200) {
+                                    console.log('Request log status:', res.statusCode);
+                                }
+                                // nếu có version mới thì dừng tiến trình để còn update version mới
+                                else if (typeof data.version != 'undefined' && data.version * 1 > current_version) {
+                                    has_new_version = data.version;
+                                }
+                                console.log(data);
+                            });
+                            /*
+                        } else {
+                            console.log('No update log: ', coin_code);
+                            */
+                        }
                         run_update_log++;
                     }
                 }
