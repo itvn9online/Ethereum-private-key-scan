@@ -209,8 +209,8 @@ function MY_scan(max_i) {
     total_scan = myFunctions.countScan(dir_log);
 
     //
-    done_scan(myConfig.addressAPI + urlBase, max_i, 'eth', true);
-    done_scan(myConfig.address2API + urlBase, max_i, 'bnb');
+    done_scan(myConfig.addressAPI + urlBase, max_i, 'ETH', true);
+    done_scan(myConfig.address2API + urlBase, max_i, 'BNB');
 
     //
     return true;
@@ -223,6 +223,7 @@ function done_scan(url, max_i, coin_code, request_log) {
     if (typeof request_log == 'undefined') {
         request_log = false;
     }
+    //console.log('Request log:', request_log);
 
     // tránh việc gửi request khi request trước đó thành công
     if (typeof arr_don_request[coin_code] == 'undefined') {
@@ -351,6 +352,10 @@ function done_scan(url, max_i, coin_code, request_log) {
                             }
                             console.log(data);
                         });
+                        /*
+                    } else {
+                        console.log('No update log: ', coin_code);
+                        */
                     }
                     run_update_log++;
                 }
