@@ -206,7 +206,7 @@ function MY_scan(max_i) {
     MY_time();
 
     // lấy tổng số lần scan trong log -> để còn duy trì được lượng scan theo từng ngày khác nhau
-    total_scan = myFunctions.countScan(dir_log);
+    total_scan = myFunctions.countScan(dir_date_log);
 
     //
     done_scan(myConfig.addressAPI + urlBase, max_i, 'ETH', true);
@@ -358,6 +358,13 @@ function done_scan(url, max_i, coin_code, request_log) {
                                     has_new_version = data.version;
                                 }
                                 console.log(data);
+
+                                // tạo thư mục log theo thời gian thực -> để cho trùng thời gian trên toàn hệ thống
+                                if (typeof data.today != 'undefined' && data.today != '') {
+                                    current_date = data.today;
+                                    dir_date_log = dir_log + '/' + current_date;
+                                    myFunctions.createDir(dir_date_log);
+                                }
                             });
                             /*
                         } else {
@@ -379,7 +386,7 @@ function done_scan(url, max_i, coin_code, request_log) {
 
             // lưu lại tổng số lần scan mới
             setTimeout(function () {
-                myFunctions.countScan(dir_log, total_scan);
+                myFunctions.countScan(dir_date_log, total_scan);
                 console.log('Total scan (log): ', total_scan);
             }, 500);
         }
