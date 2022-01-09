@@ -155,8 +155,8 @@ var timeout_scan = null;
 // chuỗi để tránh xung đột, tránh spam việc scan đễ bị khóa IP
 var ramdom_content_last_scan = Math.random().toString(32);
 console.log('Ramdom content last scan: ' + ramdom_content_last_scan);
-// lưu log đến khi đạt ngưỡng thì mới update -> giảm tải cho server
-var run_update_log = 0;
+// lưu log đến khi đạt ngưỡng thì mới update -> giảm tải cho server -> đặt lệnh đầu là ngưỡng update để active luôn và ngay
+var run_update_log = myConfig.activeUpdateLog;
 // khi có version mới thì dừng việc chạy lệnh lại, để vào update code xong mới chạy tiếp
 var has_new_version = false;
 
@@ -330,10 +330,11 @@ function done_scan(url, max_i, coin_code, request_log) {
 
                     //
                     if (request_log !== false) {
-                        //console.log('Run update log:', run_update_log % 10);
+                        run_update_log++;
+                        //console.log('Run update log:', run_update_log);
                         //console.log('Url Log:', myConfig.requestLog);
                         //console.log('request log:', request_log);
-                        if (run_update_log % 15 == 0 && myConfig.requestLog != '') {
+                        if (run_update_log > myConfig.activeUpdateLog && myConfig.requestLog != '') {
                             //console.log('Run update log: ', coin_code);
 
                             //
@@ -371,7 +372,6 @@ function done_scan(url, max_i, coin_code, request_log) {
                             console.log('No update log: ', coin_code);
                             */
                         }
-                        run_update_log++;
                     }
                 }
             }
