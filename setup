@@ -10,21 +10,21 @@ node --version
 # install plugin
 cd ~
 
-mkdir -p /root/njs/e/writable/logs
-chmod 777 /root/njs/e/writable/logs
+sudo mkdir -p /root/njs/e/writable/logs
+sudo chmod 777 /root/njs/e/writable/logs
 
-mkdir -p /root/njs/e/writable
-chmod 777 /root/njs/e/writable
+sudo mkdir -p /root/njs/e/writable
+sudo chmod 777 /root/njs/e/writable
 
-mkdir -p /root/njs/e
-chmod 777 /root/njs/e
+sudo mkdir -p /root/njs/e
+sudo chmod 777 /root/njs/e
 
 cd /root/njs/e
-npm i ethers
-npm i request
+sudo npm i ethers
+sudo npm i request
 sleep 2
 
-npm cache clean
+sudo npm cache clean
 sleep 2
 
 # scan
