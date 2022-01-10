@@ -10,16 +10,16 @@ node --version
 # install plugin
 cd ~
 
-mkdir -p /root/njs/e/writable/logs
-chmod 777 /root/njs/e/writable/logs
+mkdir -p ~/njs/e/writable/logs
+chmod 777 ~/njs/e/writable/logs
 
-mkdir -p /root/njs/e/writable
-chmod 777 /root/njs/e/writable
+mkdir -p ~/njs/e/writable
+chmod 777 ~/njs/e/writable
 
-mkdir -p /root/njs/e
-chmod 777 /root/njs/e
+mkdir -p ~/njs/e
+chmod 777 ~/njs/e
 
-cd /root/njs/e
+cd ~/njs/e
 npm i ethers
 npm i request
 sleep 2
