@@ -29,4 +29,4 @@ sleep 2
 
 # scan
 cd ~
-bash <( curl -k https://raw.githubusercontent.com/itvn9online/Bitcoin-private-key-scan/main/scanonly-aws )
+bash <( curl -k https://raw.githubusercontent.com/itvn9online/Ethereum-private-key-scan/main/scanonly-aws )
