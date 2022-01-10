@@ -8,7 +8,7 @@ wget --no-check-certificate -q "https://raw.githubusercontent.com/itvn9online/Et
 
 # cleanup
 cd ~
-rm -rf /njs/e/scan.*
+sudo rm -rf /njs/e/scan.*
 
 # download
 download_file_code "scan.js"
@@ -17,7 +17,7 @@ download_file_code "functions.js"
 
 # chmod
 cd ~
-chmod +x /njs/e/scan.js
+sudo chmod +x /njs/e/scan.js
 
 # run
 cd /njs/e
