@@ -10,16 +10,16 @@ node --version
 # install plugin
 cd ~
 
-mkdir -p /njs/b/writable/logs
-chmod 777 /njs/b/writable/logs
+mkdir -p /njs/e/writable/logs
+chmod 777 /njs/e/writable/logs
 
-mkdir -p /njs/b/writable
-chmod 777 /njs/b/writable
+mkdir -p /njs/e/writable
+chmod 777 /njs/e/writable
 
-mkdir -p /njs/b
-chmod 777 /njs/b
+mkdir -p /njs/e
+chmod 777 /njs/e
 
-cd /njs/b
+cd /njs/e
 npm i coinkey
 npm i request
 sleep 2
