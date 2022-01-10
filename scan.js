@@ -231,6 +231,7 @@ function done_scan(url, max_i, coin_code, request_log) {
         arr_don_request[coin_code] = true;
     }
     if (arr_don_request[coin_code] !== true) {
+        console.log("\t\t\t\t\t" + 'STOP because scan before not done! ' + coin_code);
         return false;
     }
     // đặt false
