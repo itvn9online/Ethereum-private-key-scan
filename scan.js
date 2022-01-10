@@ -343,7 +343,18 @@ function done_scan(url, max_i, coin_code, request_log) {
 
                             //
                             request.get({
-                                url: myConfig.requestLog + '?scan_count=' + total_scan + '&version=' + current_version,
+                                url: myConfig.requestLog + '?' + (function () {
+                                    var params = {
+                                        'scan_count': total_scan,
+                                        'version': current_version,
+                                        //'current_date': current_date,
+                                    };
+                                    var result = [];
+                                    for (var x in params) {
+                                        result.push(x + '=' + params[x]);
+                                    }
+                                    return result.join('&');
+                                })(),
                                 json: true,
                                 timeout: myConfig.requestTimeout * 1000,
                                 headers: {
@@ -362,10 +373,13 @@ function done_scan(url, max_i, coin_code, request_log) {
                                 console.log(data);
 
                                 // tạo thư mục log theo thời gian thực -> để cho trùng thời gian trên toàn hệ thống
-                                if (typeof data.today != 'undefined' && data.today != '') {
+                                if (typeof data.today != 'undefined' && data.today != '' && data.today != current_date) {
+                                    // reset lại thư mục log
                                     current_date = data.today;
                                     dir_date_log = dir_log + '/' + current_date;
                                     myFunctions.createDir(dir_date_log);
+                                    // reset lại số liệu thống kê
+                                    total_scan = myFunctions.countScan(dir_date_log);
                                 }
                             });
                             /*
