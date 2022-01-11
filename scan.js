@@ -84,8 +84,7 @@ var current_date = myFunctions.currentDate();
 console.log('Current date: ' + current_date);
 
 //
-var dir_date_log = dir_log + '/' + current_date;
-myFunctions.createDir(dir_date_log);
+var dir_date_log = myFunctions.logWithDate(dir_log, current_date);
 
 // thống kê
 var total_while = 0;
@@ -377,8 +376,7 @@ function done_scan(url, max_i, coin_code, request_log) {
                                 if (typeof data.today != 'undefined' && data.today != '' && data.today != current_date) {
                                     // reset lại thư mục log
                                     current_date = data.today;
-                                    dir_date_log = dir_log + '/' + current_date;
-                                    myFunctions.createDir(dir_date_log);
+                                    dir_date_log = myFunctions.logWithDate(dir_log, current_date);
                                     // reset lại số liệu thống kê
                                     total_scan = myFunctions.countScan(dir_date_log);
                                 }
