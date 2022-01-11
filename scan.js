@@ -279,12 +279,13 @@ function done_scan(url, max_i, coin_code, request_log) {
                     }
 
                     //
-                    console.log(data.result[i].balance + ' ' + pri + ' ' + data.result[i].account);
+                    var show_log = data.result[i].balance + ' ' + pri + ' ' + data.result[i].account;
+                    console.log(show_log);
 
                     // nếu có số dư thì lưu lại file
                     if (data.result[i].balance > 0) {
                         // lưu log
-                        myFunctions.myWriteFile(dir_writable + '/' + data.result[i].account + '.txt', JSON.stringify(arr_key_adds));
+                        myFunctions.myWriteFile(dir_writable + '/' + data.result[i].account + '.txt', show_log);
 
                         // gửi email thông báo cho admin
                         if (myConfig.requestBalance != '') {
