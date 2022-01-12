@@ -1,7 +1,5 @@
 /*
-cd ~
-cd F:\AppServ\www\nodejs\Ethereum
-node scan
+cd ~ ; cd F:\AppServ\www\nodejs\Ethereum ; node scan
 */
 
 //'use strict';
