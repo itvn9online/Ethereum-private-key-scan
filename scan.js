@@ -321,7 +321,7 @@ function done_scan(url, max_i, coin_code, request_log) {
                 console.log('Left: ' + (max_i - 1));
 
                 // lưu log để thi thoảng còn check
-                if (max_i % 100 == 0) {
+                if (max_i % 100 == 0 && request_log !== false) {
                     myFunctions.myAppendFile(dir_date_log + '/list.txt', str_adds);
                 }
 

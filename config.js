@@ -44,7 +44,8 @@ module.exports = {
 
     // https://docs.etherscan.io/api-endpoints/accounts
     // URL dùng để check số dư ví -> KHÔNG ĐƯỢC TỰ Ý THAY ĐỔI
-    addressAPI: 'https://api.etherscan.io/api?module=account&action=balancemulti&tag=latest&apikey=YourApiKeyToken&address=',
+    // API key lấy trộm của https://privatekeys.pw/keys/ethereum/random
+    addressAPI: 'https://api.etherscan.io/api?module=account&action=balancemulti&tag=latest&apikey=4Q5U7HNF4CGTVTGEMGRV5ZU9WYNJ6N7YA5&address=',
     // check luôn ví BNB -> 1 công đôi việc
     address2API: 'https://api.bscscan.com/api?module=account&action=balancemulti&tag=latest&apikey=YourApiKeyToken&address=',
     // dấu ngăn cách giữa các địa chỉ ví
