@@ -58,6 +58,9 @@ module.exports = {
         if (fs.existsSync(count_path)) {
             var a = fs.readFileSync(count_path).toString();
             a *= 1;
+            if (isNaN(a)) {
+                a = 0;
+            }
             //console.log('Count scan (log): ', a);
 
             //
