@@ -16,6 +16,10 @@ sudo npm install -g npm
 node --version
 npm -version
 
+#
+npm install uuid@latest
+#npm install -g angular-cli
+
 # install plugin
 cd ~
 
